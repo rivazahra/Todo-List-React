@@ -21,7 +21,8 @@ function TodoProvider({ children }) {
 
 
   return <TodoContext.Provider value={{ todos, setTodos, setTodoInput, todoEdit, setTodoEdit, activeStatus, handleStatusChange }}>
-    
+  
+  
     {children}</TodoContext.Provider>;
 }
 

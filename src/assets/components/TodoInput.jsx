@@ -17,15 +17,30 @@ function TodoInput() {
     e.preventDefault();
     if (!input || /^\s*$/.test(input)) {
       return;
-      }
+    }
 
-    if (todoEdit) {
-      // Jika sedang dalam mode edit, lakukan edit pada todo yang ada
-      const editedTodos = todos.map((todo) => (todo.id === todoEdit.id ? { ...todo, value: input } : todo));
-      setTodos(editedTodos);
-      setTodoEdit(null); // Keluar dari mode edit setelah penyuntingan selesai
-    } else {
-      // Jika tidak dalam mode edit, tambahkan todo baru
+    //   if (todoEdit) {
+      
+    //     // Jika sedang dalam mode edit, lakukan edit pada todo yang ada
+    //     const editedTodos = todos.map((todo) => (todo.id === todoEdit.id ? { ...todo, value: input } : todo));
+    //     setTodos(editedTodos);
+    //     setTodoEdit(null); // Keluar dari mode edit setelah penyuntingan selesai
+    //   } else {
+    //     // Jika tidak dalam mode edit, tambahkan todo baru
+    //     const newTodo = {
+    //       id: new Date(),
+    //       value: input,
+    //       status: false,
+    //     };
+
+    //     setTodos([...todos, newTodo]);
+    //   }
+
+    //   setInput("");
+    // };
+    
+    if (!Object.keys(todoEdit).length) {
+      // If todoEdit is an empty object, add a new todo
       const newTodo = {
         id: new Date(),
         value: input,
@@ -33,10 +48,14 @@ function TodoInput() {
       };
 
       setTodos([...todos, newTodo]);
+    } else {
+      // If todoEdit is not empty, perform edit on the existing todo
+      const editedTodos = todos.map((todo) => (todo.id === todoEdit.id ? { ...todo, value: input } : todo));
+      setTodos(editedTodos);
+      setTodoEdit(null); // Exit edit mode after editing is done
     }
-
     setInput("");
-  };
+  }
 
   return (
     <form action="" className="flex justify-center gap-5">

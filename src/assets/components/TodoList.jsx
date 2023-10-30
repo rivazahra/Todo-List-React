@@ -1,10 +1,10 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../../context/todo-provider";
 import {  FaRegEdit, FaTrash } from "react-icons/fa";
 
 function TodoList() {
-  const { todos, setTodos, setTodoInput, setIsEdit, setTodoEdit,todoEdit, activeStatus } = useContext(TodoContext);
-
+  const { todos, setTodos,setIsEdit, setTodoEdit,todoEdit, activeStatus } = useContext(TodoContext);
+const [todoInput,  setTodoInput] = useState("");
   useEffect(() => {
     // Set isEdit ke false saat komponen di-mount jika tidak ada todo yang sedang diedit
     if (!todoEdit) {
