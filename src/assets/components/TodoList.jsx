@@ -4,7 +4,7 @@ import {  FaRegEdit, FaTrash } from "react-icons/fa";
 
 function TodoList() {
   const { todos, setTodos,setIsEdit, setTodoEdit,todoEdit, activeStatus } = useContext(TodoContext);
-const [todoInput,  setTodoInput] = useState("");
+  const [todoInput, setTodoInput] = useState("");
   useEffect(() => {
     // Set isEdit ke false saat komponen di-mount jika tidak ada todo yang sedang diedit
     if (!todoEdit) {
